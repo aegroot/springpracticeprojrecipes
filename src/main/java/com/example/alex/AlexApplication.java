@@ -8,6 +8,10 @@ public class AlexApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AlexApplication.class, args);
+
+
+
+
 	}
 
 }
