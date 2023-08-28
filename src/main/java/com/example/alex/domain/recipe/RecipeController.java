@@ -3,10 +3,12 @@ package com.example.alex.domain.recipe;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/recipe")
@@ -19,9 +21,18 @@ public class RecipeController {
     public List<Recipe> findAll(){
         return repository.findAll();
     }
+    @GetMapping("findById")
+    public Optional<Recipe> findById(long id){
+        return repository.findById(id);
+    }
 
     @GetMapping("recipes")
     public String sampleGet(){return "hello recipes";}
+
+    @PostMapping("save")
+    public void saveRecipe(Recipe recipe){
+        repository.save(recipe);
+    }
 
     @GetMapping("seed")
     public String seed(){
